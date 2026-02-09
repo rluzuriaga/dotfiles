@@ -1,0 +1,8 @@
+screenshot-path "/tmp/screenshot.png"
+
+binds {
+    // ─── Screenshots ───
+    Mod+S               hotkey-overlay-title="Screenshot" { spawn-sh "rm -f /tmp/screenshot.png && niri msg action screenshot --show-pointer=false && for i in $(seq 1 100); do [ -f /tmp/screenshot.png ] && break; sleep 0.05; done && [ -f /tmp/screenshot.png ] && satty -f /tmp/screenshot.png"; }
+    Mod+CTRL+S          hotkey-overlay-title="Screenshot Screen" { spawn-sh "rm -f /tmp/screenshot.png && niri msg action screenshot-screen --show-pointer=false && for i in $(seq 1 100); do [ -f /tmp/screenshot.png ] && break; sleep 0.05; done && [ -f /tmp/screenshot.png ] && satty -f /tmp/screenshot.png"; }
+    Mod+Shift+S         hotkey-overlay-title="Screenshot Window" { spawn-sh "rm -f /tmp/screenshot.png && niri msg action screenshot-window && for i in $(seq 1 100); do [ -f /tmp/screenshot.png ] && break; sleep 0.05; done && [ -f /tmp/screenshot.png ] && satty -f /tmp/screenshot.png"; }
+}

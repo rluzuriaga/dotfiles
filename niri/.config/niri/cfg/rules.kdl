@@ -1,0 +1,27 @@
+window-rule {
+    geometry-corner-radius 20 // Set every window radius to 20
+    clip-to-geometry true
+}
+
+window-rule {
+    // Putting the matches in the same line acts as an AND.
+    //   If they are in seperate lines, it takes effect if ANY of the matched are true.
+    match app-id="zen" title="Picture-in-Picture"
+
+    open-floating true
+    open-focused false
+    default-column-width { fixed 275; }
+    default-window-height { fixed 180; }
+    default-floating-position x=5 y=5 relative-to="top-right" // This still displays under the noctalia-shell bar so no need to account for that.
+}
+
+window-rule {
+    match app-id="zen" title="Zen Browser"
+
+    open-maximized true
+}
+
+layer-rule {
+    match namespace="^noctalia-wallpaper*"
+    place-within-backdrop true
+}
