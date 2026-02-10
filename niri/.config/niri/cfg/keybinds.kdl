@@ -127,6 +127,7 @@ binds {
     // ─── Modes ───
     Mod+CTRL+T                          { toggle-window-floating; }
     Mod+CTRL+F                          { fullscreen-window; }
+    Mod+Shift+F                         { maximize-window-to-edges; }
     Mod+W                               { toggle-column-tabbed-display; }
 
     // ─── Emergency Escape Key ───
