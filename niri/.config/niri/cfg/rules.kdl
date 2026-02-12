@@ -21,6 +21,12 @@ window-rule {
     open-maximized true
 }
 
+window-rule {
+    match app-id="Pinentry-gtk"
+
+    open-floating true
+}
+
 layer-rule {
     match namespace="^noctalia-wallpaper*"
     place-within-backdrop true
