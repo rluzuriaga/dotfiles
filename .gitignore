@@ -1,1 +1,8 @@
 .uuid
+.git
+
+### SSH
+/.ssh/*.key*
+/.ssh/known_hosts
+/.ssh/authorized_keys
+
