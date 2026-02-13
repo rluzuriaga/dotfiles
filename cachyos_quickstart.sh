@@ -32,7 +32,7 @@ declare -ar pacman_packages=(
     "lua-language-server"
     "github-cli"
     "onlyoffice"
-    "reminna"
+    "reminna" # Doesn't include the RDP protocol, need to figure out what is needed.
     "prismlauncher"
     "cliphist"
     "playerctl"
@@ -60,6 +60,8 @@ stow fonts nvim noctalia niri kitty
 # "Install" fonts
 fc-cache -f
 
+# Change the default shell to bash
+chsh -s /usr/bin/bash
 
 # Prefer dark mode for all gtk apps
 dconf write /org/gnome/desktop/interface/color-scheme '"prefer-dark"'
