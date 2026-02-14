@@ -1,5 +1,23 @@
 #!/usr/bin/bash
 
+display_dashed_message() {
+    local text="$1"
+    local do_clear="$2"
+    local middle_line="--- ${text} ---"
+    local length=${#middle_line}
+
+    local dashed_line
+    dashed_line=$(printf '%*s' "$length" '' | tr ' ' '-')
+
+    if [[ -n $do_clear ]]; then
+        clear
+    fi
+    echo "$dashed_line"
+    echo "$middle_line"
+    echo "$dashed_line"
+    echo ""
+}
+
 declare -ar pacman_packages=(
     "zoxide"
     "distrobox"
@@ -46,27 +64,34 @@ declare -ar flatpak_packages=(
     "dev.aunetx.deezer"
 )
 
+display_dashed_message "Updating system" "do_clear"
 sudo pacman -Syu
 
+display_dashed_message "Installing packages with pacman" "do_clear"
 sudo pacman -S ${$pacman_packages[@]}
 
+display_dashed_message "Installing packages with cargo" "do_clear"
 cargo install --locked tree-sitter-cli
 
+display_dashed_message "Installing flatpaks" "do_clear"
 flatpak install flathub ${$flatpak_packages[@]}
 
-# Apply the dotfiles with stow
+display_dashed_message "Applying dotfiles" "do_clear"
 for dir in */; do
     stow "${dir%/}"
 done
 
-# "Install" fonts
+display_dashed_message "Adding fonts to cache"
 fc-cache -f
 
-# Change the default shell to bash
+display_dashed_message "Changing the default shell to bash"
 chsh -s /usr/bin/bash
 
-# Prefer dark mode for all gtk apps
+display_dashed_message "Setting gtk apps to prefer dark mode"
 dconf write /org/gnome/desktop/interface/color-scheme '"prefer-dark"'
+
+display_dashed_message "Creating distrobox container for FOS building"
+distrobox create --name FOS_Builder --image ubuntu:24.04 --init --additional-packages "systemd libpam-systemd" --unshare-all
 
 # TODO: In here put a message to download hytale from the website before entering to the next install
 # flatpak --user install ~/Downloads/hytale-launcher-latest.flatpak
@@ -75,8 +100,5 @@ dconf write /org/gnome/desktop/interface/color-scheme '"prefer-dark"'
 
 # TODO: Add a message to download Zoom from the website and install it with the next line
 # sudo pacman -U ~/Downloads/zoom.pkg.tar.xz
-
-# Create distrobox container for FOS building
-distrobox create --name FOS_Builder --image ubuntu:24.04 --init --additional-packages "systemd libpam-systemd" --unshare-all
 
 # TODO: Maybe add a reminder that the app association commands are in the mimeapps.list file?
