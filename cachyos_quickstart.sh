@@ -54,9 +54,10 @@ cargo install --locked tree-sitter-cli
 
 flatpak install flathub ${$flatpak_packages[@]}
 
-# Apply the dotfiles
-# TODO: Do this programmatically
-stow fonts nvim noctalia niri kitty FTA
+# Apply the dotfiles with stow
+for dir in */; do
+    stow "${dir%/}"
+done
 
 # "Install" fonts
 fc-cache -f
