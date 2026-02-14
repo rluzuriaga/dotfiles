@@ -32,7 +32,8 @@ declare -ar pacman_packages=(
     "lua-language-server"
     "github-cli"
     "onlyoffice"
-    "reminna" # Doesn't include the RDP protocol, need to figure out what is needed.
+    "reminna"
+    "freerdp"
     "prismlauncher"
     "cliphist"
     "playerctl"
@@ -74,4 +75,6 @@ dconf write /org/gnome/desktop/interface/color-scheme '"prefer-dark"'
 # TODO: Add a message to download Zoom from the website and install it with the next line
 # sudo pacman -U ~/Downloads/zoom.pkg.tar.xz
 
+# Create distrobox container for FOS building
+distrobox create --name FOS_Builder --image ubuntu:24.04 --init --additional-packages "systemd libpam-systemd" --unshare-all
 
