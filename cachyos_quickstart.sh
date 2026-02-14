@@ -56,7 +56,7 @@ flatpak install flathub ${$flatpak_packages[@]}
 
 # Apply the dotfiles
 # TODO: Do this programmatically
-stow fonts nvim noctalia niri kitty
+stow fonts nvim noctalia niri kitty FTA
 
 # "Install" fonts
 fc-cache -f
@@ -78,3 +78,4 @@ dconf write /org/gnome/desktop/interface/color-scheme '"prefer-dark"'
 # Create distrobox container for FOS building
 distrobox create --name FOS_Builder --image ubuntu:24.04 --init --additional-packages "systemd libpam-systemd" --unshare-all
 
+# TODO: Maybe add a reminder that the app association commands are in the mimeapps.list file?
