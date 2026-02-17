@@ -102,3 +102,18 @@ distrobox create --name FOS_Builder --image ubuntu:24.04 --init --additional-pac
 # sudo pacman -U ~/Downloads/zoom.pkg.tar.xz
 
 # TODO: Maybe add a reminder that the app association commands are in the mimeapps.list file?
+
+# TODO: These messages were on the mimeapps.list file but it broke the file. Need to display a message here with them or something else.
+# This is just a reminder of what commands can be used to make these changes
+# View available applications (there are multiple places):
+#     ls /usr/share/applications/
+#     ls ~/.local/share/flatpak/exports/share/applications/
+#     ls /var/lib/flatpak/exports/share/applications/
+# Get mimetype of file:
+#     xdg-mime query filetype /path/to/file.ext (can be relative or full path)
+# View current default for mimetype:
+#     xdg-mime query default <mimetype> (text/plain, image/jpeg, ...)
+# Set default app for mimetype:
+#     xdg-mime default application.desktop <mimetype>
+
+
