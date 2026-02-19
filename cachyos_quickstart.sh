@@ -50,7 +50,7 @@ declare -ar pacman_packages=(
     "lua-language-server"
     "github-cli"
     "onlyoffice"
-    "reminna"
+    "remmina"
     "freerdp"
     "prismlauncher"
     "cliphist"
@@ -68,13 +68,13 @@ display_dashed_message "Updating system" "do_clear"
 sudo pacman -Syu
 
 display_dashed_message "Installing packages with pacman" "do_clear"
-sudo pacman -S ${$pacman_packages[@]}
+sudo pacman -S "${pacman_packages[@]}"
 
 display_dashed_message "Installing packages with cargo" "do_clear"
 cargo install --locked tree-sitter-cli
 
 display_dashed_message "Installing flatpaks" "do_clear"
-flatpak install flathub ${$flatpak_packages[@]}
+flatpak install flathub "${flatpak_packages[@]}"
 
 display_dashed_message "Applying dotfiles" "do_clear"
 for dir in */; do
