@@ -76,6 +76,11 @@ cargo install --locked tree-sitter-cli
 display_dashed_message "Installing flatpaks" "do_clear"
 flatpak install flathub "${flatpak_packages[@]}"
 
+display_dashed_message "Backing up current dotfiles"
+for dir */; do
+    mv "~/.config/${dir%/}" "~/.config/${dir%/}_bak" 2>/dev/null
+done
+
 display_dashed_message "Applying dotfiles" "do_clear"
 for dir in */; do
     stow "${dir%/}"
