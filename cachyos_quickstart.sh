@@ -77,7 +77,7 @@ display_dashed_message "Installing flatpaks" "do_clear"
 flatpak install flathub "${flatpak_packages[@]}"
 
 display_dashed_message "Backing up current dotfiles"
-for dir */; do
+for dir in */; do
     mv "~/.config/${dir%/}" "~/.config/${dir%/}_bak" 2>/dev/null
 done
 
