@@ -67,6 +67,10 @@ declare -ar flatpak_packages=(
 display_dashed_message "Updating system" "do_clear"
 sudo pacman -Syu
 
+display_dashed_message "Updating cache for tldr pages"
+tldr --clean-cache
+tldr --update
+
 display_dashed_message "Installing packages with pacman" "do_clear"
 sudo pacman -S "${pacman_packages[@]}"
 
