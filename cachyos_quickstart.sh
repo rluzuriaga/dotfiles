@@ -82,7 +82,7 @@ tldr --update
 
 display_dashed_message "Backing up current dotfiles"
 for dir in */; do
-    mv "~/.config/${dir%/}" "~/.config/${dir%/}_bak" 2>/dev/null
+    mv ~/.config/"${dir%/}" ~/.config/"${dir%/}_bak" 2>/dev/null
 done
 
 display_dashed_message "Applying dotfiles" "do_clear"
