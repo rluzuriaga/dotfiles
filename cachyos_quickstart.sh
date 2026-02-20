@@ -77,7 +77,7 @@ display_dashed_message "Installing flatpaks" "do_clear"
 flatpak install flathub "${flatpak_packages[@]}"
 
 display_dashed_message "Updating cache for tldr pages"
-tldr --clean-cache
+tldr --clear-cache
 tldr --update
 
 display_dashed_message "Backing up current dotfiles"
