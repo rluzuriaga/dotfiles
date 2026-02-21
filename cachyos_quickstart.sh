@@ -19,6 +19,7 @@ display_dashed_message() {
 }
 
 declare -ar pacman_packages=(
+    "tldr"
     "zoxide"
     "distrobox"
     "podman"
