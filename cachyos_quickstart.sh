@@ -57,6 +57,7 @@ declare -ar pacman_packages=(
     "cliphist"
     "playerctl"
     "stow"
+    "shellcheck"
 )
 
 declare -ar flatpak_packages=(
