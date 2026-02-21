@@ -68,13 +68,13 @@ declare -ar flatpak_packages=(
 display_dashed_message "Updating system" "do_clear"
 sudo pacman -Syu
 
-display_dashed_message "Installing packages with pacman" "do_clear"
+display_dashed_message "Installing packages with pacman"
 sudo pacman -S "${pacman_packages[@]}"
 
-display_dashed_message "Installing packages with cargo" "do_clear"
+display_dashed_message "Installing packages with cargo"
 cargo install --locked tree-sitter-cli
 
-display_dashed_message "Installing flatpaks" "do_clear"
+display_dashed_message "Installing flatpaks"
 flatpak install flathub "${flatpak_packages[@]}"
 
 display_dashed_message "Updating cache for tldr pages"
@@ -86,7 +86,7 @@ for dir in */; do
     mv ~/.config/"${dir%/}" ~/.config/"${dir%/}_bak" 2>/dev/null
 done
 
-display_dashed_message "Applying dotfiles" "do_clear"
+display_dashed_message "Applying dotfiles"
 for dir in */; do
     stow "${dir%/}"
 done
