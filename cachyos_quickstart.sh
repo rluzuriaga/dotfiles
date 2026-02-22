@@ -64,6 +64,7 @@ declare -ar flatpak_packages=(
     "org.gnome.TextEditor"
     "com.discordapp.Discord"
     "dev.aunetx.deezer"
+    "org.gnome.Calculator"
 )
 
 display_dashed_message "Updating system" "do_clear"
