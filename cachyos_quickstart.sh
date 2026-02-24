@@ -67,7 +67,14 @@ declare -ar flatpak_packages=(
     "org.gnome.Calculator"
 )
 
-display_dashed_message "Updating system" "do_clear"
+display_dashed_message "Creating /home btrfs config if it doesn't already exist" "do_clear"
+if ! snapper list-config | grep --silent "/home"; then
+    sudo snapper --config home create-config /home
+fi
+root_snapshot_number=$(sudo snapper --config root create --type pre --print-number --cleanup-algorithm number --description "Pre custom quickstart script")
+home_snapshot_number=$(sudo snapper --config home create --type pre --print-number --cleanup-algorithm number --description "Pre custom quickstart script")
+
+display_dashed_message "Updating system"
 sudo pacman -Syu
 
 display_dashed_message "Installing packages with pacman"
@@ -104,6 +111,10 @@ dconf write /org/gnome/desktop/interface/color-scheme '"prefer-dark"'
 
 display_dashed_message "Creating distrobox container for FOS building"
 distrobox create --name FOS_Builder --image ubuntu:24.04 --init --additional-packages "systemd libpam-systemd" --unshare-all
+
+display_dashed_message "Creating post snapshot"
+sudo snapper --config root create --type post --pre-number $root_snapshot_number --cleanup-algorithm number --description "Post custom quickstart script"
+sudo snapper --config home create --type post --pre-number $home_snapshot_number --cleanup-algorithm number --description "Post custom quickstart script"
 
 # TODO: In here put a message to download hytale from the website before entering to the next install
 # flatpak --user install ~/Downloads/hytale-launcher-latest.flatpak
