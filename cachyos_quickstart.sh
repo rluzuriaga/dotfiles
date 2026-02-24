@@ -69,7 +69,7 @@ declare -ar flatpak_packages=(
 )
 
 display_dashed_message "Creating /home btrfs config if it doesn't already exist" "do_clear"
-if ! snapper list-config | grep --silent "/home"; then
+if ! snapper list-configs | grep --silent "/home"; then
     sudo snapper --config home create-config /home
 fi
 root_snapshot_number=$(sudo snapper --config root create --type pre --print-number --cleanup-algorithm number --description "Pre custom quickstart script")
