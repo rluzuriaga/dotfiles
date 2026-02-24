@@ -703,6 +703,9 @@ require("lazy").setup({
 				"dotenv-linter", -- .env files Linter
 				"htmx-lsp", -- HTMX LSP
 				"systemd-lsp", -- Systemd files LSP
+				"pyright", -- Python LSP
+				"shellcheck", -- Bash Linter
+				"shfmt", -- Shell/Bash Formatter
 				-- You can add other tools here that you want Mason to install
 			})
 
