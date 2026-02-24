@@ -58,6 +58,7 @@ declare -ar pacman_packages=(
     "playerctl"
     "stow"
     "shellcheck"
+    "nushell"
 )
 
 declare -ar flatpak_packages=(
